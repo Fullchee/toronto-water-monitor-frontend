@@ -1,6 +1,7 @@
 import * as Yup from "yup";
+import { FormikSelectItem } from "../FormikSelect";
 
-export const FormSchema = Yup.object().shape({
+export const WaterFormSchema = Yup.object().shape({
   accountNumber: Yup.string()
     .min(9, "Account number must be exactly 9 digits")
     .max(9, "Account number must be exactly 9 digits")
@@ -25,4 +26,50 @@ export const FormSchema = Yup.object().shape({
     .required("Last name or business name is required"),
 
   paymentMethod: Yup.number().required("Payment method is required"),
+  email: Yup.string().required("Email is required to get notifications"),
 });
+
+export interface FormValues {
+  accountNumber: string;
+  clientNumber: string;
+  lastName: string;
+  postalCode: string;
+  paymentMethod: string;
+  email: string;
+}
+
+export const initialValues: FormValues = {
+  accountNumber: "",
+  clientNumber: "",
+  lastName: "",
+  postalCode: "",
+  paymentMethod: "",
+  email: "",
+};
+
+export const paymentMethodItems: FormikSelectItem[] = [
+  {
+    label: "N/A",
+    value: "0",
+  },
+  {
+    label: "Pre-authorized",
+    value: "1",
+  },
+  {
+    label: "Main-in cheque",
+    value: "2",
+  },
+  {
+    label: "In-person",
+    value: "3",
+  },
+  {
+    label: "Bank payment",
+    value: "4",
+  },
+  {
+    label: "Payment drop box",
+    value: "3",
+  },
+];
