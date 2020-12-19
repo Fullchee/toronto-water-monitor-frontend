@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {WaterForm} from "./components/Form/WaterForm"
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <WaterForm />
   </React.StrictMode>,
   document.getElementById('root')
 );

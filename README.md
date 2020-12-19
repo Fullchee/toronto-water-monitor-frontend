@@ -11,4 +11,4 @@ Get an email notification when your water usage is too high!
 
 ## TODOs
 
-- https://www.smashingmagazine.com/2020/10/react-validation-formik-yup/
+- 
