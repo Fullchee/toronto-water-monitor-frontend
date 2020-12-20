@@ -1,3 +1,6 @@
 .FormikSelect {
   margin: 10px 0;
+  .MuiFormHelperText-root {
+    color: var(--red-700, #c53030); 
+  }
 }

@@ -3,32 +3,33 @@ import { FormikSelectItem } from "../FormikSelect";
 
 export const WaterFormSchema = Yup.object().shape({
   accountNumber: Yup.string()
-    .min(9, "Account number must be exactly 9 digits")
-    .max(9, "Account number must be exactly 9 digits")
+    .min(9, "Account number has 9 digits")
+    .max(9, "Account number has 9 digits")
     .required("Account number is required"),
 
   clientNumber: Yup.string()
-    .min(11, "Client number must have this format: ######### 0#")
-    .max(12, "Client number must have this format: ######### 0#")
-    .matches(
-      /^\d{9}[\s-]?0\d$/g,
-      "Client number must have this format: ######### 0#"
-    )
+    .min(11, "Client number format: ######### 0#")
+    .max(12, "Client number format: ######### 0#")
+    .matches(/^\d{9}[\s-]?0\d$/g, "Client number format: ######### 0#")
     .required("Client number is required"),
 
   postalCode: Yup.string()
-    .min(6, "Postal code must have this format: A#A #A#")
-    .max(7, "Postal code must have this format: A#A #A#")
+    .min(6, "Postal code format: A#A #A#")
+    .max(7, "Postal code format: A#A #A#")
+    .matches(/^\w\d\w[\s]?\d\w\d$/g, "Postal code format: A#A #A#")
     .required("Postal code is required"),
 
   lastName: Yup.string()
     .min(1, "Too short")
     .required("Last name or business name is required"),
 
-  paymentMethod: Yup.number().required("Payment method is required"),
+  paymentMethod: Yup.string().required("Payment method is required"),
   email: Yup.string()
     .email()
     .required("Email is required to get notifications"),
+  threshold: Yup.number().required(
+    "You'll get notified when your daily water usage surpasses this amount (in thousands of litres)"
+  ),
 });
 
 export interface FormValues {
@@ -38,6 +39,7 @@ export interface FormValues {
   postalCode: string;
   paymentMethod: string;
   email: string;
+  threshold: number;
 }
 
 export const initialValues: FormValues = {
@@ -47,6 +49,7 @@ export const initialValues: FormValues = {
   postalCode: "",
   paymentMethod: "",
   email: "",
+  threshold: 3,
 };
 
 export const paymentMethodItems: FormikSelectItem[] = [

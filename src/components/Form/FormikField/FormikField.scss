@@ -11,10 +11,14 @@
 }
 
 .FormikField {
-  margin: 10px 0;
+  margin: 1rem 0;
   min-width: 225px;
 
+  @media only screen and (max-width: 650px) {
+    width: 100%;
+  }
+
   .MuiFormHelperText-root.Mui-required {
-    color: var(--red-700, red);
+    color: var(--red-700, #c53030);
   }
 }

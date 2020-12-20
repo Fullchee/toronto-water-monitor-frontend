@@ -10,5 +10,3 @@ Get an email notification when your water usage is too high!
 - backend: https://github.com/Fullchee/toronto-water-monitor-backend
 
 ## TODOs
-
-- 

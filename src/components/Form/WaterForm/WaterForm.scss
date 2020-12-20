@@ -1,11 +1,18 @@
-.App {
+.water-form {
   background: white;
   border-radius: 10px;
-  width: 500px;
   padding: 50px;
+  max-width: 700px;
 
-  .account-number {
-    display: flex;
-    justify-content: space-between;
+  &__intro {
+    line-height: 1.5rem;
+  }
+  .toronto-water-items {
+    .account-number {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: -1rem;
+    }
   }
 }

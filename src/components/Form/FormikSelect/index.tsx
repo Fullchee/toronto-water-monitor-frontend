@@ -35,7 +35,7 @@ const MaterialUISelectField: React.FC<MaterialUISelectFieldProps> = ({
   name,
   onChange,
   onBlur,
-  required
+  required,
 }) => {
   return (
     <FormControl fullWidth>
@@ -48,7 +48,12 @@ const MaterialUISelectField: React.FC<MaterialUISelectFieldProps> = ({
   );
 };
 
-const FormikSelect: React.FC<FormikSelectProps> = ({ name, items, label, required = false }) => {
+const FormikSelect: React.FC<FormikSelectProps> = ({
+  name,
+  items,
+  label,
+  required = false,
+}) => {
   return (
     <div className="FormikSelect">
       <Field
@@ -58,7 +63,7 @@ const FormikSelect: React.FC<FormikSelectProps> = ({ name, items, label, require
         errorString={<ErrorMessage name={name} />}
         required={required}
       >
-        {items.map(item => (
+        {items.map((item) => (
           <MenuItem key={item.value} value={item.value}>
             {item.label}
           </MenuItem>
