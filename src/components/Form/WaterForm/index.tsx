@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Form } from "formik";
 import Button from "@material-ui/core/Button";
 import "./WaterForm.scss";
+import ""
 
 import FormikField from "../FormikField";
 import FormikSelect from "../FormikSelect";
@@ -13,8 +14,10 @@ import {
 } from "./WaterFormSchema";
 
 export const WaterForm: React.FC = () => {
-  const handleSubmit = (values: FormValues): void => {
-    alert(JSON.stringify(values));
+  const handleSubmit = async (values: FormValues): Promise<void> => {
+    const formattedValues = formatValues(values);
+    // TODO: setState: submitted to change the form to be a SUCCESS message or to indicate the error at the top
+    console.log(result);
   };
 
   return (
