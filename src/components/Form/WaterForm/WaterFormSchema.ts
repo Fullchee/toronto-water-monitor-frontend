@@ -26,7 +26,9 @@ export const WaterFormSchema = Yup.object().shape({
     .required("Last name or business name is required"),
 
   paymentMethod: Yup.number().required("Payment method is required"),
-  email: Yup.string().required("Email is required to get notifications"),
+  email: Yup.string()
+    .email()
+    .required("Email is required to get notifications"),
 });
 
 export interface FormValues {

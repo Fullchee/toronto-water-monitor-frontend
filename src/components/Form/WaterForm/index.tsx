@@ -28,18 +28,24 @@ export const WaterForm: React.FC = () => {
         {({ dirty, isValid }) => {
           return (
             <Form>
-              <FormikField
-                name="accountNumber"
-                label="Account number"
-                required
-              />
-              <FormikField name="clientNumber" label="Client number" required />
-              <FormikField name="postalCode" label="Postal code" required />
+              <div className="account-number">
+                <FormikField
+                  name="accountNumber"
+                  label="Account number"
+                  required
+                />
+                <FormikField
+                  name="clientNumber"
+                  label="Client number"
+                  required
+                />
+              </div>
               <FormikField
                 name="lastName"
                 label="Last name or business name"
                 required
               />
+              <FormikField name="postalCode" label="Postal code" required />
               <FormikSelect
                 name="paymentMethod"
                 items={paymentMethodItems}

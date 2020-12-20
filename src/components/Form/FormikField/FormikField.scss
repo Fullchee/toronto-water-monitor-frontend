@@ -1,3 +1,20 @@
+:root {
+  --red-100: #fff5f5;
+  --red-200: #fed7d7;
+  --red-300: #feb2b2;
+  --red-400: #fc8181;
+  --red-500: #f56565;
+  --red-600: #e53e3e;
+  --red-700: #c53030;
+  --red-800: #9b2c2c;
+  --red-900: #742a2a;
+}
+
 .FormikField {
   margin: 10px 0;
+  min-width: 225px;
+
+  .MuiFormHelperText-root.Mui-required {
+    color: var(--red-700, red);
+  }
 }

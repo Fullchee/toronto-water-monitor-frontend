@@ -3,4 +3,9 @@
   border-radius: 10px;
   width: 500px;
   padding: 50px;
+
+  .account-number {
+    display: flex;
+    justify-content: space-between;
+  }
 }
