@@ -28,6 +28,7 @@ const FormikField: React.FC<FormikFieldProps> = ({
         fullWidth
         type={type}
         helperText={<ErrorMessage name={name} />}
+        data-testid={name}
       />
     </div>
   );

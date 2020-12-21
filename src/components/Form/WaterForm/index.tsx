@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form } from "formik";
 import Button from "@material-ui/core/Button";
 import "./WaterForm.scss";
-import ""
+import { createAccount, formatValues } from "../../../api";
 
 import FormikField from "../FormikField";
 import FormikSelect from "../FormikSelect";
@@ -14,13 +14,24 @@ import {
 } from "./WaterFormSchema";
 
 export const WaterForm: React.FC = () => {
+  const [submittedMessage, setSubmittedMessage] = useState("");
+  const [formError, setFormError] = useState("");
+
   const handleSubmit = async (values: FormValues): Promise<void> => {
     const formattedValues = formatValues(values);
-    // TODO: setState: submitted to change the form to be a SUCCESS message or to indicate the error at the top
-    console.log(result);
+    const result = await createAccount(formattedValues);
+    if (result === "Account already exists") {
+      setFormError("Account already exists.");
+    } else {
+      setSubmittedMessage(result);
+    }
   };
 
-  return (
+  return submittedMessage ? (
+    <div className="water-form">
+      <h1>{submittedMessage}</h1>
+    </div>
+  ) : (
     <div className="water-form">
       <div className="water-form__intro">
         <h1>Get Toronto water usage alerts</h1>
@@ -83,6 +94,7 @@ export const WaterForm: React.FC = () => {
               >
                 Subscribe
               </Button>
+              {formError ? <p className="form-error">{formError}</p> : null}
             </Form>
           );
         }}
