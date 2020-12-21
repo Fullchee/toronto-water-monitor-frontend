@@ -6,13 +6,13 @@ import { axe, toHaveNoViolations } from "jest-axe";
 expect.extend(toHaveNoViolations);
 
 describe("Form testing", () => {
-  test.skip("a11y", async () => {
+  test("a11y", async () => {
     const { container } = render(<WaterForm />);
     const results = await axe(container);
 
     expect(results).toHaveNoViolations();
   });
-  test("happy path: valid items", () => {
+  test.skip("happy path: valid items", () => {
     const { getByText, getByLabelText, getByTestId } = render(<WaterForm />);
 
     const accountNumber = getByTestId("accountNumber");

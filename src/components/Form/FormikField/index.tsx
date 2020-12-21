@@ -20,6 +20,7 @@ const FormikField: React.FC<FormikFieldProps> = ({
   return (
     <div className="FormikField">
       <Field
+        id={name}
         required={required}
         autoComplete="off"
         as={TextField}
