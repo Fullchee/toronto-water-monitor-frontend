@@ -1,5 +1,4 @@
-import { render, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+import { render, waitFor, prettyDOM, fireEvent } from "@testing-library/react";
 import { WaterForm } from "./index";
 
 import { axe, toHaveNoViolations } from "jest-axe";
@@ -11,9 +10,8 @@ describe("Form testing", () => {
     const results = await axe(container);
     expect(results).toHaveNoViolations();
   });
-  it("should fire an API call when the items are valid", async () => {
-    const { container } = render(<WaterForm />);
 
+  async function fillForm(container: Element, values: any) {
     const accountNumber = container.querySelector(
       'input[name="accountNumber"]'
     );
@@ -25,29 +23,94 @@ describe("Form testing", () => {
     );
     const email = container.querySelector('input[name="email"]');
     const threshold = container.querySelector('input[name="threshold"]');
-    const submit = container.querySelector('button[name="submit"]');
     await waitFor(() => {
-      userEvent.type(accountNumber!, "123456789");
+      fireEvent.change(accountNumber!, {
+        target: {
+          value: values.accountNumber,
+        },
+      });
     });
     await waitFor(() => {
-      userEvent.type(clientNumber!, "123456789 01");
+      fireEvent.change(clientNumber!, {
+        target: {
+          value: values.clientNumber,
+        },
+      });
     });
     await waitFor(() => {
-      userEvent.type(lastName!, "Name");
+      fireEvent.change(lastName!, {
+        target: {
+          value: values.lastName,
+        },
+      });
     });
     await waitFor(() => {
-      userEvent.type(postalCode!, "M1M 1M1");
+      fireEvent.change(postalCode!, {
+        target: {
+          value: values.postalCode,
+        },
+      });
     });
     await waitFor(() => {
-      userEvent.type(paymentMethod!, "4");
+      fireEvent.change(paymentMethod!, {
+        target: {
+          value: values.paymentMethod,
+        },
+      });
     });
     await waitFor(() => {
-      userEvent.type(email!, "email@email.com");
+      fireEvent.change(email!, {
+        target: {
+          value: values.email,
+        },
+      });
     });
     await waitFor(() => {
-      userEvent.type(threshold!, "3");
+      fireEvent.change(threshold!, {
+        target: {
+          value: values.threshold,
+        },
+      });
+    });
+    return {
+      accountNumber,
+      clientNumber,
+      lastName,
+      postalCode,
+      paymentMethod,
+      email,
+      threshold,
+    };
+  }
+  it("should enable the submit button when the items are valid", async () => {
+    const { container } = render(<WaterForm />);
+    await fillForm(container, {
+      accountNumber: "123456789",
+      clientNumber: "123456789 01",
+      lastName: "Name",
+      postalCode: "M1M 1M1",
+      paymentMethod: "4",
+      email: "email@email.com",
+      threshold: "3",
     });
 
+    const submit = container.querySelector('button[name="submit"]');
+    expect(submit).toBeEnabled();
+  });
+
+  it("should validate the account number", async () => {
+    const { container } = render(<WaterForm />);
+    await fillForm(container, {
+      accountNumber: "1234567890",
+      clientNumber: "123456789 01",
+      lastName: "Name",
+      postalCode: "M1M 1M1",
+      paymentMethod: "4",
+      email: "email@email.com",
+      threshold: "3",
+    });
+
+    const submit = container.querySelector('button[name="submit"]');
     expect(submit).toBeDisabled();
   });
 });
