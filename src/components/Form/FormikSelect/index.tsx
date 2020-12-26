@@ -62,7 +62,6 @@ const FormikSelect: React.FC<FormikSelectProps> = ({
         label={label}
         errorString={<ErrorMessage name={name} />}
         required={required}
-        data-testid={name}
       >
         {items.map((item) => (
           <MenuItem key={item.value} value={item.value}>

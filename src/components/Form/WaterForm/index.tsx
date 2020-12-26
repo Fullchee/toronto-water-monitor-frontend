@@ -73,7 +73,7 @@ export const WaterForm: React.FC = () => {
                 <FormikSelect
                   name="paymentMethod"
                   items={paymentMethodItems}
-                  label="Position"
+                  label="Payment method"
                   required
                 />
               </div>
@@ -91,6 +91,7 @@ export const WaterForm: React.FC = () => {
                 color="primary"
                 disabled={!dirty || !isValid}
                 type="submit"
+                name="submit"
               >
                 Subscribe
               </Button>
