@@ -20,9 +20,13 @@ export const WaterForm: React.FC = () => {
   const handleSubmit = async (values: FormValues): Promise<void> => {
     const formattedValues = formatValues(values);
     const result = await createAccount(formattedValues);
-    if (result === "Account already exists") {
-      setFormError("Account already exists.");
+    if (
+      result === "Account already exists" ||
+      result === "Check that the info works on MyWaterToronto"
+    ) {
+      setFormError(result);
     } else {
+      console.log(result);
       setSubmittedMessage(result);
     }
   };

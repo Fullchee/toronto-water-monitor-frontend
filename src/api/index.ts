@@ -35,6 +35,8 @@ export const createAccount = async (formattedValues: APIAccount) => {
     return "Form submitted successfully! Check your inbox for a confirmation email";
   } else if (result.status === 409) {
     return "Account already exists";
+  } else if (result.status === 400) {
+    return "Check that the info works on MyWaterToronto";
   } else if (result.status === 500) {
     console.log(result);
     return "Server error";
