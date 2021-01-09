@@ -1,8 +1,8 @@
 .water-form {
   background: white;
   border-radius: 10px;
-  padding: 50px;
-  max-width: 700px;
+  padding: 32px;
+  max-width: 30rem;
 
   &__intro {
     line-height: 1.5rem;
@@ -14,7 +14,19 @@
       justify-content: space-between;
       margin-bottom: -1rem;
     }
+
+    .client-number {
+      @media screen and (max-width: 650px) {
+        width: 100%;
+        padding-left: 0;
+      }
+    }
   }
+
+  .description-text {
+    line-height: 1.5rem;
+  }
+
   .form-error {
     color: #c53030;
   }

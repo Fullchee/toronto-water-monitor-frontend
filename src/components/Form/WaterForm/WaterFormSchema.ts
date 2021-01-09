@@ -27,9 +27,7 @@ export const WaterFormSchema = Yup.object().shape({
   email: Yup.string()
     .email()
     .required("Email is required to get notifications"),
-  threshold: Yup.number().required(
-    "You'll get notified when your daily water usage surpasses this amount (in thousands of litres)"
-  ),
+  threshold: Yup.number().required("Please enter a threshold (default is 3)"),
 });
 
 export interface FormValues {

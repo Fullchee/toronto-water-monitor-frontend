@@ -62,11 +62,13 @@ export const WaterForm: React.FC = () => {
                     label="Account number"
                     required
                   />
-                  <FormikField
-                    name="clientNumber"
-                    label="Client number"
-                    required
-                  />
+                  <div className="client-number">
+                    <FormikField
+                      name="clientNumber"
+                      label="Client number"
+                      required
+                    />
+                  </div>
                 </div>
                 <FormikField
                   name="lastName"
@@ -85,11 +87,15 @@ export const WaterForm: React.FC = () => {
                 <FormikField name="email" label="Email" required type="email" />
                 <FormikField
                   name="threshold"
-                  label="Get notified when you use more than this amount of water (in thousands of litres)"
+                  label="Threshold"
                   required
                   type="number"
                 />
               </div>
+              <p className="description-text">
+                You'll get an email when your daily water usage surpasses the
+                threshold (in thousands of litres)
+              </p>
               <Button
                 variant="contained"
                 color="primary"
