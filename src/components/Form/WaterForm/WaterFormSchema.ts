@@ -43,12 +43,12 @@ export interface FormValues {
 }
 
 export const initialValues: FormValues = {
-  accountNumber: "",
-  clientNumber: "",
-  lastName: "",
-  postalCode: "",
-  paymentMethod: "",
-  email: "",
+  accountNumber: process.env.REACT_APP_ACCOUNT_NUMBER || "",
+  clientNumber: process.env.REACT_APP_CLIENT_NUMBER || "",
+  lastName: process.env.REACT_APP_LAST_NAME || "",
+  postalCode: process.env.REACT_APP_POSTAL_CODE || "",
+  paymentMethod: process.env.REACT_APP_LAST_PAYMENT_METHOD || "",
+  email: process.env.REACT_APP_EMAIL || "",
   threshold: 3,
 };
 
