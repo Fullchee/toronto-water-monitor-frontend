@@ -12,3 +12,4 @@ Get an email notification when your water usage is too high!
 ## TODOs
 
 - rtl tests for the form (submitting invalid and valid data)
+- [Circular, Linear progress React components - Material-UI](https://material-ui.com/components/progress/#interactive-integration)
